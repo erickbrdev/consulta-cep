@@ -1,21 +1,14 @@
 import React from 'react'
+import CEPDados from '../Reutilizavel/CEPDados'
 
 export default function Resultados(props) {
-   const result = props.result  
-
-  const keys = Object.keys(result)
-
-  const elements = keys.map((key, index) => (
-    <span key={index}><b>{key}: </b>{result[key]}</span>         
-  ))
+   const {result, redirect} = props
 
   return (
-    <div className="App">
-      <header className="App-header">       
-        <span>Resultados para o CEP 16075-420</span>
-        {elements}
-        <button>Consultar novamente</button>    
-      </header>
-    </div>
+    <>            
+      <span>Resultados para o CEP {result.cep}</span>
+       {<CEPDados cepDados = { result }/>}
+      <button onClick={() => redirect("PESQUISA")}>Consultar novamente</button>        
+    </>
   )
 }

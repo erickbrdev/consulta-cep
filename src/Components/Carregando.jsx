@@ -1,12 +1,16 @@
 import React from 'react'
 
-export default function Carregando() {
+export default function Carregando(props) {
+  const { redirect, ticket } = props
+
+  function handleCancel() {
+    ticket.current++;
+    redirect("PESQUISA")
+  }
   return (
-    <div className="App">
-      <header className="App-header">       
-        <p>Carregando resultados...</p>
-        <button>Cancelar</button>    
-      </header>
-    </div>
+    <>
+      <p>Carregando resultados...</p>
+      <button onClick={() => handleCancel()}>Cancelar</button>  
+    </>
   )
 }
